@@ -1,0 +1,44 @@
+#!/usr/bin/env dash
+#
+# .dashrc
+
+set -o emacs;
+set +o noglob;
+set -o monitor;
+
+stty -ixon -ctlecho;
+#tabs -4;
+
+
+{
+    HOSTNAME=$(hostname -s 2>/dev/null);
+    echo "$HOSTNAME" |
+    grep -E -q -e '.*([	 ]|localhost)$'
+} &&
+    HOSTNAME=$(hostname 2>/dev/null);
+
+HISTFILE=${XDG_VAR_HOME}/spool/dash_history;
+PS1='% ';
+PS2='> ';
+PS4='+ ';
+SHELL=$(which dash);
+
+export HISTFILE;
+export HOSTNAME;
+export PS1;
+export PS2;
+export PS4;
+export SHELL;
+
+. "$HOME/".profile.d/ext.sh;
+. "$HOME/".profile.d/base.sh;
+. "$HOME/".profile.d/run.sh;
+
+unalias -a;
+\ProfileRcBaseAlias;
+
+\ProfileRcRunGpg 1>/dev/null;
+\ProfileRcRunKeychainInteractiv;
+\ProfileRcRunLsSet;
+
+# vim: set ts=4 sw=4 tw=0 et :
