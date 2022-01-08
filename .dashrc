@@ -2,31 +2,31 @@
 #
 # .dashrc
 
-set -o emacs;
-set -o notify;
+set -o emacs
+set -o notify
 
-stty -ixon -ctlecho;
+stty -ixon -ctlecho
 #tabs -4;
 
-HISTFILE=${XDG_VAR_HOME}/spool/dash_history;
-PS1='% ';
-PS2='> ';
-PS4='+ ';
+HISTFILE=${XDG_VAR_HOME:?}/spool/dash_history
+PS1='% '
+PS2='> '
+PS4='+ '
 
-export HISTFILE;
-export PS1;
-export PS2;
-export PS4;
+export HISTFILE
+export PS1
+export PS2
+export PS4
 
-. "$HOME/.profile.d/ext.sh";
-. "$HOME/.profile.d/base.sh";
-. "$HOME/.profile.d/run.sh";
+. "$HOME/.profile.d/ext.sh"
+. "$HOME/.profile.d/base.sh"
+. "$HOME/.profile.d/run.sh"
 
-unalias -a;
-\ProfileRcBaseAlias;
+unalias -a
+\ProfileRcBaseAlias
 
-\ProfileRcRunGpg 1>/dev/null;
-\ProfileRcRunKeychainInteractiv;
-\ProfileRcRunLsSet;
+\ProfileRcRunGpg 1>/dev/null
+\ProfileRcRunKeychainInteractiv
+\ProfileRcRunLsSet
 
 # vim: set ft=sh :
